@@ -1,0 +1,12 @@
+CREATE TABLE `webappdb`.`questions` (
+  `id` INT NOT NULL,
+  `question` TEXT NULL,
+  PRIMARY KEY (`id`));
+
+  CREATE TABLE `webappdb`.`ranking` (
+  `id` INT NOT NULL,
+  `question_id` INT NOT NULL,
+  `rank` INT NULL,
+  `time` DATE NULL,
+  PRIMARY KEY (`id`));
+  
