@@ -1,3 +1,4 @@
+package app;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -9,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.Dao;
-import data.tieto;
+import data.ListedData;
 
 /**
  * Servlet implementation class ShowDatabase
@@ -21,7 +22,7 @@ public class showDatabase extends HttpServlet {
 	
 	@Override
 	public void init() {
-		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "root", "ROBOSALA2");
+		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "user", "password");
 	}
        
     /**
@@ -36,16 +37,16 @@ public class showDatabase extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<tieto> list=null;
+		ArrayList<ListedData> list=null;
 		if (dao.getConnection()) {
-			list=dao.readAllTieto();
+			list=dao.readAllData();
 		}
 		else {
 			System.out.println("No connection to database");
 		}
-		request.setAttribute("fishlist", list);
+		request.setAttribute("dataList", list);
 		
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showTieto.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showData.jsp");
 		rd.forward(request, response);
 	}
 }

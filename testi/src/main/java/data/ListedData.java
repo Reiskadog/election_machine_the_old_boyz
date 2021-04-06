@@ -1,15 +1,15 @@
 package data;
 
-public class tieto {
+public class ListedData {
 	private int id;
-	private String breed;
-	public tieto(String id, String breed) {
+	private String data;
+	public ListedData(String id, String data) {
 		// TODO Auto-generated constructor stub
 		setId(id);
-		this.breed=breed;
+		this.data=data;
 	}
 	
-	public tieto() {
+	public ListedData() {
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -27,11 +27,11 @@ public class tieto {
 			//Do nothing - the value of id won't be changed
 		}
 	}
-	public String getBreed() {
-		return breed;
+	public String getData() {
+		return data;
 	}
-	public void setBreed(String breed) {
-		this.breed = breed;
+	public void setData(String data) {
+		this.data = data;
 	}
 
 }

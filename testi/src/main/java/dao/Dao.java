@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import data.tieto;
+import data.ListedData;
 
 public class Dao {
 
@@ -39,15 +39,15 @@ public class Dao {
 			return false;
 		}
 	}
-	public ArrayList<tieto> readAllTieto() {
-		ArrayList<tieto> list=new ArrayList<>();
+	public ArrayList<ListedData> readAllData() {
+		ArrayList<ListedData> list=new ArrayList<>();
 		try {
 			Statement stmt=conn.createStatement();
 			ResultSet RS=stmt.executeQuery("select * from kysymykset");
 			while (RS.next()){
-				tieto f=new tieto();
+				ListedData f=new ListedData();
 				f.setId(RS.getInt("KYSYMYS_ID"));
-				f.setBreed(RS.getString("KYSYMYS"));
+				f.setData(RS.getString("KYSYMYS"));
 				list.add(f);
 			}
 			return list;
@@ -56,5 +56,4 @@ public class Dao {
 			return null;
 		}
 	}
-
 }
