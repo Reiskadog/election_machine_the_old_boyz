@@ -21,7 +21,6 @@ public class Dao {
 		this.user=user;
 		this.pass=pass;
 	}
-	
 	public boolean getConnection() {
 		try {
 	        if (conn == null || conn.isClosed()) {
@@ -39,15 +38,18 @@ public class Dao {
 			return false;
 		}
 	}
+	/* 
+	 *Add somewhere here add,delete, update....
+	 */
 	public ArrayList<ListedData> readAllData() {
 		ArrayList<ListedData> list=new ArrayList<>();
 		try {
 			Statement stmt=conn.createStatement();
-			ResultSet RS=stmt.executeQuery("select * from kysymykset");
+			ResultSet RS=stmt.executeQuery("select * from questions");
 			while (RS.next()){
 				ListedData f=new ListedData();
-				f.setId(RS.getInt("KYSYMYS_ID"));
-				f.setData(RS.getString("KYSYMYS"));
+				f.setId(RS.getInt("id"));
+				f.setData(RS.getString("question"));
 				list.add(f);
 			}
 			return list;

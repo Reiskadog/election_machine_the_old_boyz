@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 )
 public class HelloAppEngine extends HttpServlet {
   /**
-	 * 
+	 * Maybe useless, will remove later if needed.
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -22,9 +22,6 @@ public class HelloAppEngine extends HttpServlet {
 
     response.setContentType("text/plain");
     response.setCharacterEncoding("UTF-8");
-
     response.getWriter().print("Hello App Engine!\r\n");
-    
-
   }
 }

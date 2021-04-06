@@ -22,9 +22,11 @@ public class showDatabase extends HttpServlet {
 	
 	@Override
 	public void init() {
-		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "user", "password");
+		/*
+		 *Change this to be a context based solutions later. 
+		 */
+		dao=new Dao("jdbc:mysql://localhost:3306/webappdb", "user", "password");
 	}
-       
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -32,12 +34,14 @@ public class showDatabase extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<ListedData> list=null;
+		/*
+		 * Improve this if - else with something else in futures.
+		 */
 		if (dao.getConnection()) {
 			list=dao.readAllData();
 		}
