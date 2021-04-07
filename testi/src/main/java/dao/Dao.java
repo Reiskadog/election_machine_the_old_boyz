@@ -74,6 +74,20 @@ public class Dao {
 				// TODO: handle exception
 			}
 		}
+	
+	//delete
+	public ArrayList<ListedData> deleteTableData(String id) {
+		try {
+			String sql="delete from questions where id=?";
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+			return readAllData();
+		}
+		catch(SQLException e) {
+			return null;
+		}
+	}
 }
 
 
