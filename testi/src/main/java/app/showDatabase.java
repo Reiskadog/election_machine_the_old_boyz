@@ -37,11 +37,28 @@ public class showDatabase extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
+    /*
+     * Lets make amethod that will handle the connection check, so our doGet and doPost will be less crowded.
+     */
+    
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ArrayList<ListedData> list=null;
+		if (dao.getConnection()) {
+			int idValue = Integer.parseInt(request.getParameter("idValue"));
+			String qValue = request.getParameter("qValue");
+			dao.AddTableData(idValue,qValue);
+			list=dao.readAllData();
+		}
+		else {
+			System.out.println("No connection to database");
+		}
+		request.setAttribute("dataList", list);
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showData.jsp");
+		rd.forward(request, response);
+	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<ListedData> list=null;
-		/*
-		 * Improve this if - else with something else in futures.
-		 */
 		if (dao.getConnection()) {
 			list=dao.readAllData();
 		}
@@ -49,7 +66,6 @@ public class showDatabase extends HttpServlet {
 			System.out.println("No connection to database");
 		}
 		request.setAttribute("dataList", list);
-		
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showData.jsp");
 		rd.forward(request, response);
 	}
