@@ -15,7 +15,7 @@
 <h2>Database application jsp</h2>
 <ol>
 <c:forEach var="ListedData" items="${requestScope.dataList}" >
-<li>${ListedData.id}: ${ListedData.data} <a href='/delete?id=${ListedData.id}'>delete</a> <a href='/readtoupdate?id=${ListedData.id}'>update</a>
+<li>${ListedData.id}: ${ListedData.question} <a href='/delete?id=${ListedData.id}'>delete</a> <a href='/readtoupdate?id=${ListedData.id}'>update</a>
 </c:forEach>
 </ol>
 <a href='/jsp/addToDatabase.jsp'> Add to database</a>
