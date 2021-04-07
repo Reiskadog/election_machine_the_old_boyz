@@ -11,7 +11,7 @@
 </head>
 <body>
 <h2>Add to database jsp</h2>
-<form action="/showDatabase" method="post">
+<form action="/AddToDatabase" method="post">
 	  <label for="fname">ID</label><br>
 	  <input type="text"  name="idValue" value="id"><br>
 	  <label for="lname">Question</label><br>
