@@ -60,7 +60,7 @@ public class Dao {
 		}
 	}
 	// Method needed in our application to CREATE table entries
-		public void AddTableData(int id, String question) {
+	public void AddTableData(int id, String question) {
 			String sql = "INSERT INTO questions (id, question) VALUES (?, ?)";
 			try {
 				PreparedStatement statement = conn.prepareStatement(sql);

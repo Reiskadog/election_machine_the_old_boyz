@@ -18,12 +18,6 @@
 <li>${ListedData.id}: ${ListedData.data} <a href='/delete?id=${ListedData.id}'>delete</a> <a href='/readtoupdate?id=${ListedData.id}'>update</a>
 </c:forEach>
 </ol>
-<form action="/showDatabase" method="post">
-	  <label for="fname">ID</label><br>
-	  <input type="text"  name="idValue" value="id"><br>
-	  <label for="lname">Question</label><br>
-	  <input type="text"  name="qValue" value="question"><br><br>
-	  <input type="submit" value="Submit">
-</form>
+<a href='/jsp/addToDatabase.jsp'> Add to database</a>
 </body>
 </html>
