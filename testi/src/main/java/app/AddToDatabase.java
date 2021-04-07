@@ -15,30 +15,30 @@ import data.ListedData;
 /**
  * Servlet implementation class ShowDatabase
  */
-@WebServlet("/showDatabase")
-public class showDatabase extends HttpServlet {
+@WebServlet("/AddToDatabase")
+public class AddToDatabase extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	private Dao dao=null;
-	
-	@Override
+
 	public void init() {
 		/*
 		 *Change this to be a context based solutions later. 
 		 */
 		dao=new Dao("jdbc:mysql://localhost:3306/webappdb", "user", "password");
 	}
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public showDatabase() {
+	
+	public AddToDatabase() {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<ListedData> list=null;
 		if (dao.getConnection()) {
+			int idValue = Integer.parseInt(request.getParameter("idValue"));
+			String qValue = request.getParameter("qValue");
+			dao.AddTableData(idValue,qValue);
 			list=dao.readAllData();
+			System.out.println("You are at AddToDatabase");
 		}
 		else {
 			System.out.println("No connection to database");

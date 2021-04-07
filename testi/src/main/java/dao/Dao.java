@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -58,4 +59,22 @@ public class Dao {
 			return null;
 		}
 	}
+	// Method needed in our application to CREATE table entries
+	public void AddTableData(int id, String question) {
+			String sql = "INSERT INTO questions (id, question) VALUES (?, ?)";
+			try {
+				PreparedStatement statement = conn.prepareStatement(sql);
+				statement.setInt(1, id); // Now indexing start from 1 !!!! (Remember ID also)
+				statement.setString(2, question);
+				int rowsInserted = statement.executeUpdate();
+				if (rowsInserted > 0) {
+					System.out.println("A new user was inserted successfully!");
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
 }
+
+
+
