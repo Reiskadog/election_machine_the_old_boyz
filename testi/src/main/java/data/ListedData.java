@@ -3,12 +3,41 @@ package data;
 public class ListedData {
 	private int id;
 	private String data;
+	private String fName;
+	private String lName;
+
+	
 	public ListedData(String id, String data) {
 		// TODO Auto-generated constructor stub
 		setId(id);
 		this.data=data;
 	}
 	
+	public ListedData(String id, String fName, String lName) {
+		// TODO Auto-generated constructor stub
+		setId(id);
+		this.fName=fName;
+		this.lName=lName;
+	}
+
+	
+
+	public String getfName() {
+		return fName;
+	}
+
+	public void setfName(String fName) {
+		this.fName = fName;
+	}
+
+	public String getlName() {
+		return lName;
+	}
+
+	public void setlName(String lName) {
+		this.lName = lName;
+	}
+
 	public ListedData() {
 		// TODO Auto-generated constructor stub
 	}

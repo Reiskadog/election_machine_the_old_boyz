@@ -42,7 +42,7 @@ public class QuestionDao {
 	/* 
 	 *Add somewhere here add,delete, update....
 	 */
-	public ArrayList<ListedData> readAllData() {
+	public ArrayList<ListedData> readAllQuestionData() {
 		ArrayList<ListedData> list=new ArrayList<>();
 		try {
 			Statement stmt=conn.createStatement();
@@ -59,6 +59,30 @@ public class QuestionDao {
 			return null;
 		}
 	}
+	
+	public ArrayList<ListedData> readAllElecteeData() {
+		ArrayList<ListedData> list=new ArrayList<>();
+		try {
+			Statement stmt=conn.createStatement();
+			ResultSet RS=stmt.executeQuery("select * from electees");
+			while (RS.next()){
+				ListedData f=new ListedData();
+				f.setId(RS.getInt("electee_id"));
+				f.setfName(RS.getString("first_name"));
+				f.setlName(RS.getString("last_name"));
+				list.add(f);
+			}
+			return list;
+		}
+		catch(SQLException e) {
+			return null;
+		}
+	}
+	
+	
+	
+	
+	
 	// Method needed in our application to CREATE table entries
 	public void AddTableData(int id, String question) {
 			String sql = "INSERT INTO questions (question_id, question) VALUES (?, ?)";
@@ -82,7 +106,7 @@ public class QuestionDao {
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();
-			return readAllData();
+			return readAllQuestionData();
 		}
 		catch(SQLException e) {
 			return null;

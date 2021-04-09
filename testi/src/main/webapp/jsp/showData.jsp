@@ -26,6 +26,30 @@
   			<thead>
     			<tr>
 			      	<th scope="col">ID</th>
+			      	<th scope="col">Electee</th>
+					<th scope="col">Last</th>
+    			</tr>
+  			</thead>
+  			<tbody>
+				<c:forEach var="ElecteeData" items="${requestScope.dataList2}" >
+					<tr>
+						<th scope="row">${ElecteeData.id}</th>
+						<td>${ElecteeData.fName}</td> 
+						<td>${ElecteeData.lName}</td> 
+						<td><a href='/delete?id=${ElecteeData.id}'>delete</a></td> 
+						<td><a href='/readtoupdate?id=${ElecteeData.id}'>update</a></td>
+					</tr>
+				</c:forEach>
+  			</tbody>
+		</table>
+		<a href='/jsp/addToDatabase.jsp'> Add to database</a>
+	</div>
+
+	<div class="col-sm4">
+		<table class="table">
+  			<thead>
+    			<tr>
+			      	<th scope="col">ID</th>
 			      	<th scope="col">Question</th>
     			</tr>
   			</thead>

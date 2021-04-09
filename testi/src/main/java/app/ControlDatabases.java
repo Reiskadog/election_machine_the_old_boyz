@@ -37,13 +37,18 @@ public class ControlDatabases extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<ListedData> list=null;
+		ArrayList<ListedData> list2=null;
+
 		if (dao.getConnection()) {
-			list=dao.readAllData();
+			list=dao.readAllQuestionData();
+			list2=dao.readAllElecteeData();
+			System.out.println(list2.get(0).getfName().getClass().getTypeName());
 		}
 		else {
 			System.out.println("No connection to database");
 		}
 		request.setAttribute("dataList", list);
+		request.setAttribute("dataList2", list2);
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showData.jsp");
 		rd.forward(request, response);
 	}

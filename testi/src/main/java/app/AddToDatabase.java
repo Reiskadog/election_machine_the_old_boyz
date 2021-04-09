@@ -37,7 +37,7 @@ public class AddToDatabase extends HttpServlet{
 			int idValue = Integer.parseInt(request.getParameter("idValue"));
 			String qValue = request.getParameter("qValue");
 			dao.AddTableData(idValue,qValue);
-			list=dao.readAllData();
+			list=dao.readAllQuestionData();
 			System.out.println("You are at AddToDatabase");
 		}
 		else {
