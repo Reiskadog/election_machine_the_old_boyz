@@ -4,9 +4,20 @@ USE webappdb;
 
 CREATE TABLE `questions` (
   `id` INT NOT NULL,
-  `question` TEXT NOT NULL,
+`question` TEXT NOT NULL,
   PRIMARY KEY (`id`));
+
+CREATE TABLE `electees` (
+  `electee_id` INT NOT NULL,
+  `first_name` VARCHAR(30) NOT NULL,
+  `last_name` VARCHAR(30) NOT NULL,
+  PRIMARY KEY (`electee_id`));
+
+
 
 GRANT ALL ON webappdb.* TO user@localhost identified by 'password';
 
+insert into electees(electee_id,first_name,last_name) VALUES ('1','First','Amonglast');
 insert into questions (id,question) VALUES ('1','Testing...?');
+
+

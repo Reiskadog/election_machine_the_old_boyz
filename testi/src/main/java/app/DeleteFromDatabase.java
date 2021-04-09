@@ -50,5 +50,4 @@ public class DeleteFromDatabase extends HttpServlet {
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showData.jsp");
 		rd.forward(request, response);
 	}
-
 }
