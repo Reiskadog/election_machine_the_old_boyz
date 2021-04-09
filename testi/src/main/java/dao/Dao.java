@@ -49,7 +49,7 @@ public class Dao {
 			ResultSet RS=stmt.executeQuery("select * from questions");
 			while (RS.next()){
 				ListedData f=new ListedData();
-				f.setId(RS.getInt("id"));
+				f.setId(RS.getInt("question_id"));
 				f.setData(RS.getString("question"));
 				list.add(f);
 			}
@@ -61,7 +61,7 @@ public class Dao {
 	}
 	// Method needed in our application to CREATE table entries
 	public void AddTableData(int id, String question) {
-			String sql = "INSERT INTO questions (id, question) VALUES (?, ?)";
+			String sql = "INSERT INTO questions (question_id, question) VALUES (?, ?)";
 			try {
 				PreparedStatement statement = conn.prepareStatement(sql);
 				statement.setInt(1, id); // Now indexing start from 1 !!!! (Remember ID also)
@@ -78,7 +78,7 @@ public class Dao {
 	//delete
 	public ArrayList<ListedData> deleteTableData(String id) {
 		try {
-			String sql="delete from questions where id=?";
+			String sql="delete from questions where question_id=?";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();
