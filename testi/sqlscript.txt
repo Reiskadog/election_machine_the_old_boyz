@@ -1,0 +1,12 @@
+CREATE DATABASE webappdb;
+
+USE webappdb;
+
+CREATE TABLE `questions` (
+  `id` INT NOT NULL,
+  `question` TEXT NOT NULL,
+  PRIMARY KEY (`id`));
+
+GRANT ALL ON webappdb.* TO user@localhost identified by 'password';
+
+insert into questions (id,question) VALUES ('1','Testing...?');
