@@ -10,8 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+<<<<<<< Updated upstream
 import dao.Dao;
 import data.ListedData;
+=======
+import dao.QuestionDao;
+import data.QuestionData;
+>>>>>>> Stashed changes
 
 /**
  * Servlet implementation class DeleteFromDatabase
@@ -41,7 +46,7 @@ public class DeleteFromDatabase extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id=request.getParameter("id");
-		ArrayList<ListedData> list=null;
+		ArrayList<QuestionData> list=null;
 		if (dao.getConnection()) {
 			list=dao.deleteTableData(id);
 			System.out.println("Deleted succesfully");

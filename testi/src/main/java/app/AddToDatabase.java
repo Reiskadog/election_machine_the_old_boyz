@@ -9,8 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+<<<<<<< Updated upstream
 import dao.Dao;
 import data.ListedData;
+=======
+import dao.QuestionDao;
+import data.QuestionData;
+>>>>>>> Stashed changes
 
 /**
  * Servlet implementation class ShowDatabase
@@ -32,7 +37,7 @@ public class AddToDatabase extends HttpServlet{
         // TODO Auto-generated constructor stub
     }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<ListedData> list=null;
+		ArrayList<QuestionData> list=null;
 		if (dao.getConnection()) {
 			int idValue = Integer.parseInt(request.getParameter("idValue"));
 			String qValue = request.getParameter("qValue");

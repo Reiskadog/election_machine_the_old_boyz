@@ -1,15 +1,15 @@
 package data;
 
-public class ListedData {
+public class ElecteeData {
 	private int id;
 	private String data;
-	public ListedData(String id, String data) {
+	public ElecteeData(String id, String data) {
 		// TODO Auto-generated constructor stub
 		setId(id);
 		this.data=data;
 	}
 	
-	public ListedData() {
+	public ElecteeData() {
 		// TODO Auto-generated constructor stub
 	}
 	

@@ -8,16 +8,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import data.QuestionData;
+import data.ElecteeData;
 
-public class Dao {
+public class ElecteeDao {
 
 	private String url;
 	private String user;
 	private String pass;
 	private Connection conn;
 	
-	public Dao(String url, String user, String pass) {
+	public ElecteeDao(String url, String user, String pass) {
 		this.url=url;
 		this.user=user;
 		this.pass=pass;
@@ -42,19 +42,14 @@ public class Dao {
 	/* 
 	 *Add somewhere here add,delete, update....
 	 */
-	public ArrayList<QuestionData> readAllData() {
-		ArrayList<QuestionData> list=new ArrayList<>();
+	public ArrayList<ElecteeData> readAllData() {
+		ArrayList<ElecteeData> list=new ArrayList<>();
 		try {
 			Statement stmt=conn.createStatement();
 			ResultSet RS=stmt.executeQuery("select * from questions");
 			while (RS.next()){
-<<<<<<< Updated upstream:testi/src/main/java/dao/Dao.java
-				ListedData f=new ListedData();
-				f.setId(RS.getInt("id"));
-=======
-				QuestionData f=new QuestionData();
+				ElecteeData f=new ElecteeData();
 				f.setId(RS.getInt("question_id"));
->>>>>>> Stashed changes:testi/src/main/java/dao/QuestionDao.java
 				f.setData(RS.getString("question"));
 				list.add(f);
 			}
@@ -66,7 +61,7 @@ public class Dao {
 	}
 	// Method needed in our application to CREATE table entries
 	public void AddTableData(int id, String question) {
-			String sql = "INSERT INTO questions (id, question) VALUES (?, ?)";
+			String sql = "INSERT INTO questions (question_id, question) VALUES (?, ?)";
 			try {
 				PreparedStatement statement = conn.prepareStatement(sql);
 				statement.setInt(1, id); // Now indexing start from 1 !!!! (Remember ID also)
@@ -81,9 +76,9 @@ public class Dao {
 		}
 	
 	//delete
-	public ArrayList<QuestionData> deleteTableData(String id) {
+	public ArrayList<ElecteeData> deleteTableData(String id) {
 		try {
-			String sql="delete from questions where id=?";
+			String sql="delete from questions where question_id=?";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();
