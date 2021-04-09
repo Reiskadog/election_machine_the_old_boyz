@@ -100,13 +100,26 @@ public class QuestionDao {
 		}
 	
 	//delete
-	public ArrayList<ListedData> deleteTableData(String id) {
+	public ArrayList<ListedData> deleteQuestionData(String id) {
 		try {
 			String sql="delete from questions where question_id=?";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();
 			return readAllQuestionData();
+		}
+		catch(SQLException e) {
+			return null;
+		}
+	}
+	
+	public ArrayList<ListedData> deleteElecteeData(String id) {
+		try {
+			String sql="delete from electees where electee_id=?";
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+			return readAllElecteeData();
 		}
 		catch(SQLException e) {
 			return null;

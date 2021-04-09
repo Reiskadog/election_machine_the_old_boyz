@@ -42,7 +42,7 @@ public class ControlDatabases extends HttpServlet {
 		if (dao.getConnection()) {
 			list=dao.readAllQuestionData();
 			list2=dao.readAllElecteeData();
-			System.out.println(list2.get(0).getfName().getClass().getTypeName());
+			//System.out.println(list2.get(0).getfName().getClass().getTypeName());
 		}
 		else {
 			System.out.println("No connection to database");

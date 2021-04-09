@@ -33,17 +33,20 @@ public class AddToDatabase extends HttpServlet{
     }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<ListedData> list=null;
+		ArrayList<ListedData> list2=null;
 		if (dao.getConnection()) {
 			int idValue = Integer.parseInt(request.getParameter("idValue"));
 			String qValue = request.getParameter("qValue");
 			dao.AddTableData(idValue,qValue);
 			list=dao.readAllQuestionData();
+			list2=dao.readAllElecteeData();
 			System.out.println("You are at AddToDatabase");
 		}
 		else {
 			System.out.println("No connection to database");
 		}
 		request.setAttribute("dataList", list);
+		request.setAttribute("dataList2", list2);
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showData.jsp");
 		rd.forward(request, response);
 	}

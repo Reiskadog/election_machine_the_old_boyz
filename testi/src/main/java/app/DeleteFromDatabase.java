@@ -41,12 +41,23 @@ public class DeleteFromDatabase extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id=request.getParameter("id");
-		ArrayList<ListedData> list=null;
+		String choice=request.getParameter("choice");
+		ArrayList<ListedData> list=null;//*************************************
+		ArrayList<ListedData> list2=null;//*************************************
 		if (dao.getConnection()) {
-			list=dao.deleteTableData(id);
-			System.out.println("Deleted succesfully");
+			if ("q".equals(choice))
+			{
+				list=dao.deleteQuestionData(id);//*************************************
+				System.out.println("Deleted Question");
+			}
+			else
+			{
+				list2=dao.deleteElecteeData(id);//*************************************
+				System.out.println("Deleted Electee");
+			}
 		}
-		request.setAttribute("dataList", list);
+		request.setAttribute("dataList", list);//*************************************
+		request.setAttribute("dataList2", list2);//*************************************
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showData.jsp");
 		rd.forward(request, response);
 	}
