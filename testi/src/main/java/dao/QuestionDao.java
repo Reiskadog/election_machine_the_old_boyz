@@ -79,10 +79,6 @@ public class QuestionDao {
 		}
 	}
 	
-	
-	
-	
-	
 	// Method needed in our application to CREATE table entries
 	public void AddTableData(int id, String question) {
 			String sql = "INSERT INTO questions (question_id, question) VALUES (?, ?)";
@@ -98,6 +94,21 @@ public class QuestionDao {
 				// TODO: handle exception
 			}
 		}
+	public void AddElecteeTableData(int id, String fName, String lName) {
+		String sql = "INSERT INTO electees (electee_id, first_name, last_name) VALUES (?, ?, ?)";
+		try {
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setInt(1, id); // Now indexing start from 1 !!!! (Remember ID also)
+			statement.setString(2, fName);
+			statement.setString(3, lName);
+			int rowsInserted = statement.executeUpdate();
+			if (rowsInserted > 0) {
+				System.out.println("A new user was inserted successfully!");
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 	
 	//delete
 	public ArrayList<ListedData> deleteQuestionData(String id) {

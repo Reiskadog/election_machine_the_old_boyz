@@ -15,8 +15,8 @@ import data.ListedData;
 /**
  * Servlet implementation class ShowDatabase
  */
-@WebServlet("/AddToDatabase")
-public class AddToDatabase extends HttpServlet{
+@WebServlet("/AddElecteeToDatabase")
+public class AddElecteeToDatabase extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	private QuestionDao dao=null;
 
@@ -27,7 +27,7 @@ public class AddToDatabase extends HttpServlet{
 		dao=new QuestionDao("jdbc:mysql://localhost:3306/webappdb", "user", "password");
 	}
 	
-	public AddToDatabase() {
+	public AddElecteeToDatabase() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,10 +35,13 @@ public class AddToDatabase extends HttpServlet{
 		ArrayList<ListedData> list=null;
 		ArrayList<ListedData> list2=null;
 		if (dao.getConnection()) {
-				System.out.println(request.getMethod());
 				int idValue = Integer.parseInt(request.getParameter("idValue"));
-				String qValue = request.getParameter("qValue");
-				dao.AddTableData(idValue,qValue);
+				String fName = request.getParameter("fName");
+				String lName = request.getParameter("lName");
+				System.out.println(idValue);
+				System.out.println(fName);
+
+				dao.AddElecteeTableData(idValue,fName,lName);
 				list=dao.readAllQuestionData();
 				list2=dao.readAllElecteeData();
 				System.out.println("You are at AddToDatabase");

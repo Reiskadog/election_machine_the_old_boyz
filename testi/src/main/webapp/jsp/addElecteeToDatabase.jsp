@@ -7,15 +7,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Add to Question database</title>
+<title>Add to electee database</title>
 </head>
 <body>
-<h2>Add to Question database jsp</h2>
-<form action="/AddToDatabase" method="post" name="question">
+<h2>Add to electee database jsp</h2>
+<form action="/AddElecteeToDatabase" method="post">
 	  <label for="fname">ID</label><br>
 	  <input type="text"  name="idValue" value="id"><br>
-	  <label for="lname">Question</label><br>
-	  <input type="text"  name="qValue" value="question"><br><br>
+	  <label for="lname">First name</label><br>
+	  <input type="text"  name="fName" value="fName"><br><br>
+	  <label for="lname">Last name</label><br>
+	  <input type="text"  name="lName" value="lName"><br><br>
 	  <input type="submit" value="Submit">
 	  </form>
 </body>

@@ -43,7 +43,7 @@
 					</c:forEach>
 	  			</tbody>
 			</table>
-			<a href='/jsp/addToDatabase.jsp'> Add to database</a>
+			<a href='/jsp/addElecteeToDatabase.jsp'> Add to database</a>
 		</div>
 		<div class="col-sm-6">
 			<h2>Questions</h2>
