@@ -23,9 +23,6 @@
 <div class="container">
 	<div class="col-sm4">
 		<table class="table">
-			
-		</table>
-		<table class="table">
   			<thead>
     			<tr>
 			      	<th scope="col">ID</th>
@@ -33,14 +30,14 @@
     			</tr>
   			</thead>
   			<tbody>
-			    <tr>
-			      	<c:forEach var="ListedData" items="${requestScope.dataList}" >
+				<c:forEach var="ListedData" items="${requestScope.dataList}" >
+					<tr>
 						<th scope="row">${ListedData.id}</th>
 						<td>${ListedData.data}</td> 
 						<td><a href='/delete?id=${ListedData.id}'>delete</a></td> 
 						<td><a href='/readtoupdate?id=${ListedData.id}'>update</a></td>
-					</c:forEach>
-			    </tr>
+					</tr>
+				</c:forEach>
   			</tbody>
 		</table>
 		<a href='/jsp/addToDatabase.jsp'> Add to database</a>
