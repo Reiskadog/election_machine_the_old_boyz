@@ -9,28 +9,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.Dao;
+import dao.QuestionDao;
 import data.ListedData;
 
 /**
  * Servlet implementation class ShowDatabase
  */
 @WebServlet("/showDatabase")
-public class showDatabase extends HttpServlet {
+public class ControlDatabases extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private Dao dao=null;
+	private QuestionDao dao=null;
 	
 	@Override
 	public void init() {
 		/*
 		 *Change this to be a context based solutions later. 
 		 */
-		dao=new Dao("jdbc:mysql://localhost:3306/webappdb", "user", "password");
+		dao=new QuestionDao("jdbc:mysql://localhost:3306/webappdb", "user", "password");
 	}
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public showDatabase() {
+    public ControlDatabases() {
         super();
         // TODO Auto-generated constructor stub
     }

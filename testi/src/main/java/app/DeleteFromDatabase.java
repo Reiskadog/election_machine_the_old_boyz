@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.Dao;
+import dao.QuestionDao;
 import data.ListedData;
 
 /**
@@ -20,13 +20,13 @@ import data.ListedData;
 public class DeleteFromDatabase extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	private Dao dao=null;
+	private QuestionDao dao=null;
 
 	public void init() {
 		/*
 		 *Change this to be a context based solutions later. 
 		 */
-		dao=new Dao("jdbc:mysql://localhost:3306/webappdb", "user", "password");
+		dao=new QuestionDao("jdbc:mysql://localhost:3306/webappdb", "user", "password");
 	}
     /**
      * @see HttpServlet#HttpServlet()

@@ -10,14 +10,14 @@ import java.util.ArrayList;
 
 import data.ListedData;
 
-public class Dao {
+public class QuestionDao {
 
 	private String url;
 	private String user;
 	private String pass;
 	private Connection conn;
 	
-	public Dao(String url, String user, String pass) {
+	public QuestionDao(String url, String user, String pass) {
 		this.url=url;
 		this.user=user;
 		this.pass=pass;
