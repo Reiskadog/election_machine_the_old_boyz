@@ -49,11 +49,13 @@ public class DeleteFromDatabase extends HttpServlet {
 			{
 				list=dao.deleteQuestionData(id);//*************************************
 				System.out.println("Deleted Question");
+				list2=dao.readAllElecteeData();
 			}
 			else
 			{
 				list2=dao.deleteElecteeData(id);//*************************************
 				System.out.println("Deleted Electee");
+				list=dao.readAllQuestionData();
 			}
 		}
 		request.setAttribute("dataList", list);//*************************************
