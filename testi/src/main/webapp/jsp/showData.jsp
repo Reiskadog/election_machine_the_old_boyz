@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Database application</title>
+<title>Database application jsp</title>
 </head>
 <body>
 <h2>Database application jsp</h2>
