@@ -79,6 +79,27 @@ public class QuestionDao {
 		}
 	}
 	
+	//read a single line
+	public ListedData readElectee(String id) {
+		ListedData f=null;
+		try {
+			String sql="select * from electees where electee_id=?";
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			ResultSet RS=pstmt.executeQuery();
+			while (RS.next()){
+				f=new ListedData();
+				f.setId(RS.getInt("electee_id"));
+				f.setfName(RS.getString("first_name"));
+				f.setlName(RS.getString("last_name"));
+			}
+			return f;
+		}
+		catch(SQLException e) {
+			return null;
+		}
+	}
+	
 	// Method needed in our application to CREATE table entries
 	public void AddTableData(int id, String question) {
 			String sql = "INSERT INTO questions (question_id, question) VALUES (?, ?)";
@@ -131,6 +152,22 @@ public class QuestionDao {
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();
 			return readAllElecteeData();
+		}
+		catch(SQLException e) {
+			return null;
+		}
+	}
+	
+	//update
+	public ArrayList<ListedData> updateElectee(ListedData f) {
+		try {
+			String sql="update electees set first_name=?, last_name=? where electee_id=?";
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, f.getfName());
+			pstmt.setString(2, f.getlName());
+			pstmt.setInt(3, f.getId());
+			pstmt.executeUpdate();
+			return readAllQuestionData();
 		}
 		catch(SQLException e) {
 			return null;

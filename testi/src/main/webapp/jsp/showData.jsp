@@ -13,11 +13,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<title>Database application</title>
+<title>Election machine the old boyz</title>
 </head>
 <body>
 <div class="jumbotron text-center">
-	<h1>Database application jsp</h1>
+	<h1>Election Machine</h1>
 </div>
 <div class="container">
 	<div class="row">
@@ -38,12 +38,12 @@
 							<td>${ElecteeData.fName}</td> 
 							<td>${ElecteeData.lName}</td> 
 							<td><a href='/delete?choice=e&id=${ElecteeData.id}'>delete</a></td> 
-							<td><a href='/readtoupdate?id=${ElecteeData.id}'>update</a></td>
+							<td><a href='/update?id=${ElecteeData.id}'>update</a></td>
 						</tr>
 					</c:forEach>
 	  			</tbody>
 			</table>
-			<a href='/jsp/addElecteeToDatabase.jsp'> Add to database</a>
+			<a href='/jsp/addElecteeToDatabase.jsp' class="btn btn-primary"> Add electee to database</a>
 		</div>
 		<div class="col-sm-6">
 			<h2>Questions</h2>
@@ -60,12 +60,11 @@
 							<th scope="row">${ListedData.id}</th>
 							<td>${ListedData.data}</td> 
 							<td><a href='/delete?choice=q&id=${ListedData.id}'>delete</a></td> 
-							<td><a href='/readtoupdate?=${ListedData.id}'>update</a></td>
 						</tr>
 					</c:forEach>
 	  			</tbody>
 			</table>
-			<a href='/jsp/addToDatabase.jsp'> Add to database</a>
+			<a href='/jsp/addQuestionToDatabase.jsp' class="btn btn-primary"> Add question to database</a>
 		</div>
 	</div>
 </div>
