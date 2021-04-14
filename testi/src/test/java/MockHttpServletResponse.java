@@ -9,7 +9,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletResponse;
 
-import app.HelloAppEngine;
+
 
 /**
  * This mock class is created to enable basic unit testing of the

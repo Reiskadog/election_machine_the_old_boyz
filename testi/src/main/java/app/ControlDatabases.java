@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.QuestionDao;
+import dao.Dao;
 import data.ListedData;
 
 /**
@@ -18,14 +18,14 @@ import data.ListedData;
 @WebServlet("/showDatabase")
 public class ControlDatabases extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private QuestionDao dao=null;
+	private Dao dao=null;
 	
 	@Override
 	public void init() {
 		/*
 		 *Change this to be a context based solutions later. 
 		 */
-		dao=new QuestionDao("jdbc:mysql://localhost:3306/webappdb", "user", "password");
+		dao=new Dao("jdbc:mysql://localhost:3306/webappdb", "user", "password");
 	}
     /**
      * @see HttpServlet#HttpServlet()
@@ -42,7 +42,6 @@ public class ControlDatabases extends HttpServlet {
 		if (dao.getConnection()) {
 			list=dao.readAllQuestionData();
 			list2=dao.readAllElecteeData();
-			//System.out.println(list2.get(0).getfName().getClass().getTypeName());
 		}
 		else {
 			System.out.println("No connection to database");

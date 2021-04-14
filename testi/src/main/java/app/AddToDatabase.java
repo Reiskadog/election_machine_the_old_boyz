@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.QuestionDao;
+import dao.Dao;
 import data.ListedData;
 
 /**
@@ -18,13 +18,13 @@ import data.ListedData;
 @WebServlet("/addToDatabase")
 public class AddToDatabase extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-	private QuestionDao dao=null;
+	private Dao dao=null;
 
 	public void init() {
 		/*
 		 *Change this to be a context based solutions later. 
 		 */
-		dao=new QuestionDao("jdbc:mysql://localhost:3306/webappdb", "user", "password");
+		dao=new Dao("jdbc:mysql://localhost:3306/webappdb", "user", "password");
 	}
 	
 	public AddToDatabase() {
@@ -35,7 +35,6 @@ public class AddToDatabase extends HttpServlet{
 		ArrayList<ListedData> list=null;
 		ArrayList<ListedData> list2=null;
 		if (dao.getConnection()) {
-				//System.out.println(request.getMethod());
 				int idValue = Integer.parseInt(request.getParameter("idValue"));
 				String qValue = request.getParameter("qValue");
 				String fName = request.getParameter("fName");
@@ -50,7 +49,6 @@ public class AddToDatabase extends HttpServlet{
 				}
 				list=dao.readAllQuestionData();
 				list2=dao.readAllElecteeData();
-				System.out.println("You are at AddToDatabase");
 		}	
 		else {
 			System.out.println("No connection to database");
