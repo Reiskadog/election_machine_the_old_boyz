@@ -22,9 +22,6 @@ public class DeleteFromDatabase extends HttpServlet {
 	private Dao dao=null;
 
 	public void init() {
-		/*
-		 *Change this to be a context based solutions later. 
-		 */
 		dao=new Dao("jdbc:mysql://localhost:3306/webappdb", "user", "password");
 	}
     /**
@@ -54,7 +51,6 @@ public class DeleteFromDatabase extends HttpServlet {
 				System.out.println("Deleted Electee");
 				aList.add(dao.readAllQuestionData());
 				aList.add(dao.deleteElecteeData(id));
-
 			}
 		}
 		request.setAttribute("dataList", aList.get(0));

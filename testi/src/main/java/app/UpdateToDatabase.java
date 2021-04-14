@@ -22,9 +22,6 @@ public class UpdateToDatabase extends HttpServlet {
 	private Dao dao=null;
        
 	public void init() {
-		/*
-		 *Change this to be a context based solutions later. 
-		 */
 		dao=new Dao("jdbc:mysql://localhost:3306/webappdb", "user", "password");
 	}
     /**
@@ -65,16 +62,13 @@ public class UpdateToDatabase extends HttpServlet {
 		ArrayList<ArrayList<ListedData>> aList = new ArrayList<ArrayList<ListedData>>(2);
 		
 		if (dao.getConnection()) {
-			//list=dao.updateElectee(f);
 			aList.add(dao.updateElectee(f));
 			System.out.println("electee updated");
 		}
 		aList.add(dao.readAllElecteeData());
-		
 		request.setAttribute("dataList", aList.get(0));
 		request.setAttribute("dataList2", aList.get(1));
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showData.jsp");
 		rd.forward(request, response);
 	}
-
 }

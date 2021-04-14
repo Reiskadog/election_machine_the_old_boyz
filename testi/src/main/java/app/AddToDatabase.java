@@ -21,9 +21,6 @@ public class AddToDatabase extends HttpServlet{
 	private Dao dao=null;
 
 	public void init() {
-		/*
-		 *Change this to be a context based solutions later. 
-		 */
 		dao=new Dao("jdbc:mysql://localhost:3306/webappdb", "user", "password");
 	}
 	

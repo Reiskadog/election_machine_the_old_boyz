@@ -22,6 +22,7 @@ public class Dao {
 		this.user=user;
 		this.pass=pass;
 	}
+	
 	public boolean getConnection() {
 		try {
 	        if (conn == null || conn.isClosed()) {
@@ -39,9 +40,7 @@ public class Dao {
 			return false;
 		}
 	}
-	/* 
-	 *Add somewhere here add,delete, update....
-	 */
+
 	public ArrayList<ListedData> readAllQuestionData() {
 		ArrayList<ListedData> list=new ArrayList<>();
 		try {
@@ -79,7 +78,6 @@ public class Dao {
 		}
 	}
 	
-	//read a single line
 	public ListedData readElectee(String id) {
 		ListedData f=null;
 		try {
@@ -100,7 +98,6 @@ public class Dao {
 		}
 	}
 	
-	// Method needed in our application to CREATE table entries
 	public void AddTableData(int id, String question) {
 			String sql = "INSERT INTO questions (question_id, question) VALUES (?, ?)";
 			try {
@@ -115,6 +112,7 @@ public class Dao {
 				// TODO: handle exception
 			}
 		}
+	
 	public void AddElecteeTableData(int id, String fName, String lName) {
 		String sql = "INSERT INTO electees (electee_id, first_name, last_name) VALUES (?, ?, ?)";
 		try {
@@ -131,7 +129,6 @@ public class Dao {
 		}
 	}
 	
-	//delete
 	public ArrayList<ListedData> deleteQuestionData(String id) {
 		try {
 			String sql="delete from questions where question_id=?";
@@ -158,7 +155,6 @@ public class Dao {
 		}
 	}
 	
-	//update
 	public ArrayList<ListedData> updateElectee(ListedData f) {
 		try {
 			String sql="update electees set first_name=?, last_name=? where electee_id=?";

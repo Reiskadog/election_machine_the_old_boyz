@@ -22,9 +22,6 @@ public class ControlDatabases extends HttpServlet {
 	
 	@Override
 	public void init() {
-		/*
-		 *Change this to be a context based solutions later. 
-		 */
 		dao=new Dao("jdbc:mysql://localhost:3306/webappdb", "user", "password");
 	}
     /**
