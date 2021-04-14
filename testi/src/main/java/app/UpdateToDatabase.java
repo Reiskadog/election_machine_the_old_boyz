@@ -44,8 +44,6 @@ public class UpdateToDatabase extends HttpServlet {
 
 		if (dao.getConnection()) {
 			e=dao.readElectee(id);
-			System.out.println(id);
-			System.out.println(e);
 		}
 		else {
 			System.out.println("No connection to database");
@@ -63,20 +61,18 @@ public class UpdateToDatabase extends HttpServlet {
 		String id=request.getParameter("idValue");
 		String fname=request.getParameter("fName");
 		String lname=request.getParameter("lName");
-		
 		ListedData f=new ListedData(id, fname, lname);
+		ArrayList<ArrayList<ListedData>> aList = new ArrayList<ArrayList<ListedData>>(2);
 		
-		ArrayList<ListedData> list=null;
-		ArrayList<ListedData> list2=null;
 		if (dao.getConnection()) {
-			list=dao.updateElectee(f);
+			//list=dao.updateElectee(f);
+			aList.add(dao.updateElectee(f));
 			System.out.println("electee updated");
 		}
-		list=dao.readAllQuestionData();
-		list2=dao.readAllElecteeData();
+		aList.add(dao.readAllElecteeData());
 		
-		request.setAttribute("dataList", list);
-		request.setAttribute("dataList2", list2);
+		request.setAttribute("dataList", aList.get(0));
+		request.setAttribute("dataList2", aList.get(1));
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showData.jsp");
 		rd.forward(request, response);
 	}

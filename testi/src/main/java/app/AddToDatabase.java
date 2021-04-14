@@ -32,8 +32,7 @@ public class AddToDatabase extends HttpServlet{
         // TODO Auto-generated constructor stub
     }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<ListedData> list=null;
-		ArrayList<ListedData> list2=null;
+		ArrayList<ArrayList<ListedData>> aList = new ArrayList<ArrayList<ListedData>>(2);
 		if (dao.getConnection()) {
 				int idValue = Integer.parseInt(request.getParameter("idValue"));
 				String qValue = request.getParameter("qValue");
@@ -47,14 +46,14 @@ public class AddToDatabase extends HttpServlet{
 					dao.AddElecteeTableData(idValue,fName,lName);
 					System.out.println("electee add");
 				}
-				list=dao.readAllQuestionData();
-				list2=dao.readAllElecteeData();
+				aList.add(dao.readAllQuestionData());
+				aList.add(dao.readAllElecteeData());
 		}	
 		else {
 			System.out.println("No connection to database");
 		}
-		request.setAttribute("dataList", list);
-		request.setAttribute("dataList2", list2);
+		request.setAttribute("dataList", aList.get(0));
+		request.setAttribute("dataList2", aList.get(1));
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showData.jsp");
 		rd.forward(request, response);
 	}
