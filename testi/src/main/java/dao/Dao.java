@@ -17,12 +17,25 @@ public class Dao {
 	private String pass;
 	private Connection conn;
 	
+	/**
+     * Dao constructor for database connection.
+     * 
+     * @param url    Database url
+     * @param user    Username for the database
+     * @param pass    Password for the database
+     */
 	public Dao(String url, String user, String pass) {
 		this.url=url;
 		this.user=user;
 		this.pass=pass;
 	}
 	
+	
+	/**
+     * This method makes the connection to the database.
+     * 
+     * @return    Returns either true or false, depending on if the connection is successful or not.
+     */
 	public boolean getConnection() {
 		try {
 	        if (conn == null || conn.isClosed()) {
@@ -41,6 +54,11 @@ public class Dao {
 		}
 	}
 
+	/**
+     * Purpose of this method is to read all rows from the questions-table.
+     * 
+     * @return    Either ArrayList or null
+     */
 	public ArrayList<ListedData> readAllQuestionData() {
 		ArrayList<ListedData> list=new ArrayList<>();
 		try {
@@ -59,6 +77,11 @@ public class Dao {
 		}
 	}
 	
+	/**
+     * Purpose of this method is to read all rows from the electee-table.
+     * 
+     * @return    Either ArrayList or null
+     */
 	public ArrayList<ListedData> readAllElecteeData() {
 		ArrayList<ListedData> list=new ArrayList<>();
 		try {
@@ -78,6 +101,12 @@ public class Dao {
 		}
 	}
 	
+	/**
+     * Reads a single row from electee-table depending on the given id.
+     * 
+     * @param id    the id of the wanted electee
+     * @return        Either ListedData-object or null
+     */
 	public ListedData readElectee(String id) {
 		ListedData f=null;
 		try {
@@ -98,6 +127,12 @@ public class Dao {
 		}
 	}
 	
+	/**
+     * This method adds a row into the questions-table.
+     * 
+     * @param id        id for the question
+     * @param question    question for the chosen id
+     */
 	public void AddTableData(int id, String question) {
 			String sql = "INSERT INTO questions (question_id, question) VALUES (?, ?)";
 			try {
@@ -113,6 +148,13 @@ public class Dao {
 			}
 		}
 	
+	/**
+     * Adds a row into the electees-table.
+     * 
+     * @param id    id for the electee
+     * @param fName    First name of the electee
+     * @param lName    Last name of the electee
+     */
 	public void AddElecteeTableData(int id, String fName, String lName) {
 		String sql = "INSERT INTO electees (electee_id, first_name, last_name) VALUES (?, ?, ?)";
 		try {
@@ -129,6 +171,12 @@ public class Dao {
 		}
 	}
 	
+	/**
+     * Deletes a row from the questions-table depending on the given id.
+     * 
+     * @param id    id of the question that needs to be deleted
+     * @return        Either readAllQuestionData() or null
+     */
 	public ArrayList<ListedData> deleteQuestionData(String id) {
 		try {
 			String sql="delete from questions where question_id=?";
@@ -142,6 +190,12 @@ public class Dao {
 		}
 	}
 	
+	/**
+     * Deletes a row from the electees-table depending on the given id.
+     * 
+     * @param id    id of the electee that needs to be deleted
+     * @return        Either readAllElecteeData() or null
+     */
 	public ArrayList<ListedData> deleteElecteeData(String id) {
 		try {
 			String sql="delete from electees where electee_id=?";
@@ -155,6 +209,12 @@ public class Dao {
 		}
 	}
 	
+	/**
+     * Updates electee in the electees-table depending on the given id.
+     * 
+     * @param f    ListedData-type object of the selected electee
+     * @return    Either readAllQuestionData() or null
+     */
 	public ArrayList<ListedData> updateElectee(ListedData f) {
 		try {
 			String sql="update electees set first_name=?, last_name=? where electee_id=?";
